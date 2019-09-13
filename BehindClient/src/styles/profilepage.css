@@ -1,0 +1,62 @@
+.general{
+    font-family: 'Montserrat', sans-serif;
+
+}
+.top-image{
+    background-image: url('../ProfilePhoto.png');
+    height: 230px;
+    max-height: 230px;
+}
+
+.info{
+    font-size: 3vh;
+    color: white;
+}
+
+.nameuser-prof{
+    color:white;
+    font-size: 4vh;
+    margin-top: -5% !important;
+    font-style:bold;
+}
+
+.cardsita{
+    margin-top: -8% !important;
+}
+.videobook-title{
+    font-size: 2vh; 
+}
+.galery-title{
+    color: white;
+    font-size: 2vh;
+    margin-top: 4% !important;
+}
+
+.contacticon1{
+    margin-right: 4%;
+    color: white !important;
+}
+.contacticon1:hover, .contacticon2:hover{
+    color: #24AF7D !important;
+}
+.contacticon2{
+    color: white !important;
+    margin-left: 4%;
+}
+.curriculum{
+
+    color:white;
+    font-size: 4vh;
+    margin-top: 6% !important;
+}
+.pdf{
+   color: white !important; 
+   margin-right: 2% !important;
+   margin-left: 12%;
+   margin-top: 6%;
+}
+.pdf2{
+margin-left: -2.5% !important;
+margin-top: 1.2% !important;
+position: absolute;
+}

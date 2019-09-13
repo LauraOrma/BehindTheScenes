@@ -1,0 +1,23 @@
+.cardcastingg{
+ border-top: 10px solid #25C088 !important;
+ font-family: 'Montserrat', sans-serif;
+ text-align: center !important;
+ width: 290px;
+ max-width: 290px;
+ background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%) !important;
+ height: 270px;
+}
+.castingname {
+    color: black !important;
+}
+.card-stacked{
+    text-align: center;
+}
+.cat{
+    text-align: center;
+}
+
+.titlename{
+    text-align: center;
+}   
+

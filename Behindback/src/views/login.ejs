@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+    <% include include/head.ejs %>
+</head>
+<body>
+<div class="topnav">
+    <div class="login-container">
+        <h1><%= title %></h1>
+        <p><label for="username">Username</label>
+            <input type="text" placeholder="Username" id="username"></p>
+        <p><label for="password">Password</label>
+            <input type="password" placeholder="Password" id="password"></p>
+        <button onclick="getToken()">Login</button>
+        <p><a href="/signup">Sign Up</a></p>
+        <p><a href="./forgotpass">Forgot password?</a></p>
+        <span id="token"></span>
+    </div>
+</div>
+</body>
+<%- include include/scripts.ejs %>
+<script>
+  function getToken () {
+    const usernameValue = document.getElementById('username').value
+    const passwordValue = document.getElementById('password').value
+    fetch('http://localhost:3040/api/auth', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username: usernameValue, password: passwordValue })
+    }).then(response => {
+      if (response.ok) {
+        response.text().then(text => {
+          localStorage.setItem('token', text)
+          location.href = '/users'
+        })
+      }
+    })
+  }
+
+  const token = localStorage.getItem('token')
+  let decoded = jwt_decode(token)
+  if (decoded) {
+    location.href = '/users'
+  }
+</script>
+</html>

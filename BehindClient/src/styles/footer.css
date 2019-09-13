@@ -1,0 +1,11 @@
+.page-footer{
+    background-color: #1B2D2B;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-copyright {
+    background-color: rgb(19, 31, 29) !important;
+}
+.white-text-footer{
+    font-size: 1.5vh !important;
+}

@@ -1,0 +1,26 @@
+.join{
+    margin-top: 1% !important;
+    font-family: 'Montserrat', sans-serif !important;
+    color: white !important;
+    background-color: #25C088 !important;
+    font-size: 3vh !important;
+    border-radius: 12px !important;
+    width: auto !important;
+}
+
+.modal {
+    font-family: 'Montserrat', sans-serif !important;
+    border-radius: 10px;
+    left: 0;
+    right: 0;
+    background-color: #fafafa;
+    padding: 0; 
+    max-height: 100%;
+    width: 25%;
+    will-change: top, opacity; 
+  }
+
+  h4, .welcome{
+      color: black;
+      font-weight: bold;
+  }

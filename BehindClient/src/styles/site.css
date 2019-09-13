@@ -1,0 +1,30 @@
+.important{
+    text-align: center;
+    color:white;
+    height: 150%;
+    width: auto;
+    background-color: #1B2D2B;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5vh !important;
+}
+
+.search-casting {
+    background-image: url('../citybyn.png');
+    height: 200px;
+    max-height: 200px;
+    align-items: right;
+    margin-top:-2.4%; 
+}
+.text2{
+    color:white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4.5vh;
+
+
+}
+.lastcastingspublic{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.9vh;
+    color:white;
+}

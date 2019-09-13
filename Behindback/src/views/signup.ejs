@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+</head>
+<body>
+<div class="topnav">
+    <div class="login-container">
+        <p><label for="username">Username</label><input type="text" placeholder="Username" id="username"></p>
+        <p><label for="email">Email</label><input type="text" placeholder="Email" id="email"></p>
+        <p><label for="password">Password</label><input type="password" placeholder="Password" id="password"></p>
+        <p><label for="firstname">First Name</label><input type="text" placeholder="FirstName" id="firstname"></p>
+        <p><label for="lastname">Last Name</label><input type="text" placeholder="Lastname" id="lastname"></p>
+        <p><label for="city">City</label><input type="text" placeholder="City" id="city"></p>
+        <p><label for="country">Country</label>
+            <select name="country" id="country" onchange="getState()"></select>
+        </p>
+        <p><label for="state">State</label>
+            <select name="state" id="state"></select></p>
+        <button onclick="signUp()">Sign Up</button>
+        <div id="error"></div>
+    </div>
+</div>
+</body>
+<script>
+  function signUp () {
+    let usernameValue = document.getElementById('username').value
+    let emailValue = document.getElementById('email').value
+    let passwordValue = document.getElementById('password').value
+    let firstname = document.getElementById('firstname').value
+    let lastname = document.getElementById('lastname').value
+    let city = document.getElementById('city').value
+    let state = document.getElementById('state').value
+    let country = document.getElementById('country').value
+    fetch('api/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: usernameValue,
+        email: emailValue,
+        pass: passwordValue,
+        firstname: firstname,
+        lastname: lastname,
+        city: city,
+        state: state,
+        country: country
+      })
+    }).then(response => {
+        if (response.ok) {
+          console.log("Usuario creado");
+          location.href = '/login';
+        } else {
+          response.json().then(error => {
+            document.getElementById("error").innerHTML = '<p>' + error.error + '</p>'
+          })
+        }
+      }
+    )
+  }
+
+  function getCountry () {
+    fetch('api/getcountry', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ country: 'holi' })
+    }).then(response => {
+        if (response.ok) {
+          let country = document.getElementById('country')
+          response.json().then(json =>
+            json.map(countries => {
+              let option = document.createElement('option')
+              option.text = countries.name
+              option.value = countries.id
+              country.add(option)
+            }))
+        }
+      }
+    )
+  }
+
+  function getState () {
+    document.getElementById('state').innerHTML = ''
+    fetch('api/getstate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        country: document.getElementById('country').value
+      })
+    }).then(response => {
+        if (response.ok) {
+          let state = document.getElementById('state')
+          response.json().then(json =>
+            json.map(states => {
+              let option = document.createElement('option')
+              option.text = states.name
+              option.value = states.id
+              state.add(option)
+            }))
+        }
+      }
+    )
+  }
+
+  (function () {
+    getCountry()
+  })()
+
+</script>
+</html>

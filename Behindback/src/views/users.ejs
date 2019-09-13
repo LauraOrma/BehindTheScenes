@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title%>></title>
+    <% include include/head.ejs %>
+</head>
+<body>
+<%- include include/menu.ejs %>
+<h1><%= title %></h1>
+<table id="user">
+    <th id="userHeader"></th>
+    <tbody id="userContent"></tbody>
+</table>
+</body>
+<%- include include/scripts.ejs %>
+<script>
+  const token = localStorage.getItem("token");
+  let decoded = jwt_decode(token);
+  if (!decoded) {
+    location.href = "/login";
+  } else {
+    fetch('/api/users', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          response.json().then(json =>
+            json.map(user => {
+
+            })
+          )
+        } else {
+          location.href = '/login'
+        }
+      })
+  }
+
+</script>
+</html>

@@ -1,0 +1,55 @@
+.landing-image{
+    background-image: url('../landing_image.jpg');
+    height: 640px;
+    max-height: 640px;
+}
+.Big-Slogan, .Medium-Slogan{
+    font-family: 'Montserrat', sans-serif;
+    font-style: bold;
+    color: white;
+    
+}
+.Big-Slogan {
+    padding-top: 6.5%;
+    padding-left: 6%;
+    height: auto;
+    width: 40%;
+    font-size: 10vh !important;
+    line-height: 130%;
+}
+.Medium-Slogan {
+    padding-left: 6%;
+    height: 5%;
+    width: 36%;
+    font-size: 4vh !important;
+
+}
+.join-now-button {
+    padding-left: 6%;
+    padding-bottom: 1.9%;
+    display: flex;
+    text-transform: capitalize !important;
+}
+
+
+.here{
+    color: white;
+
+}
+
+.here:link {
+    text-decoration: none;
+  }
+  
+  .here:visited {
+    text-decoration: none;
+  }
+  
+  .here:hover {
+    text-decoration: underline;
+    color:white !important; 
+  }
+  
+  .here:active {
+    text-decoration: underline;
+  }

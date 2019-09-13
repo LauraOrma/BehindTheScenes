@@ -1,0 +1,90 @@
+.cardprof {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+    max-width: 302px !important;
+    margin: auto !important;
+    text-align: center !important;
+    background-color: #1E1E1E;
+    border: 2px solid white;
+    color: white;
+}
+.enviarmaybe{
+    margin-left: 42.5%;
+    margin-top: 1%;
+}
+.subidasmall{
+    font-size: 0.8rem !important;
+    
+}
+.subidasmall2{
+    font-size: 1rem !important;
+    color: white;
+    margin-left: 9%;
+}
+.cardprof2 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+    max-width: 302px !important;
+    margin: auto !important;
+    text-align: center !important;
+    background-color: #1E1E1E;
+    border: 2px solid white;
+    color: white;
+    padding-bottom: 30%;
+}
+.editbutton{
+    font-size: 1.5rem !important;
+    text-transform: capitalize !important;
+}
+
+.avatar-image {
+    width: auto;
+    height: 300px;
+    border-bottom: 2px solid white;
+}
+
+.avatar-image img {
+    width: auto;
+    height: 300px;
+    border-bottom: 2px solid white;
+}
+.descard{
+    height:50% !important;
+}
+.title {
+    color: grey;
+    font-size: 18px;
+}
+
+.user-name-card {
+    font-size: 2.2vh;
+}
+
+button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #1B2D2B;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none !important;
+    font-size: 22px;
+    color: #1B2D2B;
+}
+
+button:hover, a:hover {
+    opacity: 0.9;
+}
+
+p.userprof {
+    line-height: 50% !important;
+}
+
+.contactusercard a {
+      color: white;
+}

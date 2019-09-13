@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+    <% include include/head.ejs %>
+</head>
+<body>
+<% include include/menu.ejs %>
+<h1><%= title %></h1>
+<div class="row">
+    <form action="/casting/add" method="post" class="col s6">
+        <input type="hidden" name="iduser" id="iduser">
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="status" name="status">
+                    <option value="" disabled selected>Choose</option>
+                    <option value="Open">Open</option>
+                    <option value="Closed">Close</option>
+                </select>
+                <label for="status">Status</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="name" name="name" type="text" class="validate">
+                <label for="name">Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input name="city" id="city" type="text" class="validate">
+                <label for="city">City</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <select name="country" id="country">
+                    <option value="" disabled selected>Choose</option>
+                    <option value="ES">España</option>
+                </select>
+                <label for="country">Country</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <select name="state" id="state">
+                    <option value="" disabled selected>Choose</option>
+                </select>
+                <label for="state">State</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input name="date" id="date" type="text" class="datepicker">
+                <label for="date">Date</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="type" name="type">
+                    <option value="" disabled selected>Choose</option>
+                    <option value="Open">Open</option>
+                    <option value="Selection">Selection</option>
+                </select>
+                <label for="type">Casting Type</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea name="description" id="description" class="materialize-textarea"></textarea>
+                <label for="description">Description</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input name="vacancy" id="vacancy" type="number" min=1 class="validate">
+                <label for="vacancy">Vacancies</label>
+            </div>
+        </div>
+        <button type="submit" class="waves-effect waves-light btn">Save</button>
+    </form>
+</div>
+<h2>Listado de castings</h2>
+<div class="col-12">
+    <table class="stripped highlight responsive-table centered">
+        <thead class="text-center">
+        <tr>
+            <th>State</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Owner</th>
+            <th>Description</th>
+            <th>Vacancies</th>
+            <th>Published</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% if (data){ %>
+            <% for(let i = 0; i < data.length; i++){ %>
+                <tr>
+                    <td><input type="hidden" name="idcasting" id="idcasting"
+                               value='<%= data[i].id_casting %>'><%= data[i].status %></td>
+                    <td><%= data[i].name %></td>
+                    <td><%= data[i].city %></td>
+                    <td><%= data[i].state %></td>
+                    <td><%= data[i].country %></td>
+                    <td><%= data[i].type %></td>
+                    <td><%= new Date(data[i].date).toLocaleDateString() %></td>
+                    <td><%= data[i].owner %></td>
+                    <td><%= data[i].description %></td>
+                    <td><%= data[i].vacancy %></td>
+                    <td><%= new Date(data[i].dateadd).toLocaleDateString() %></td>
+                    <td>
+                        <a onclick="editModal(<%= data[i].id_casting %>)"
+                           class="waves-effect waves-light">
+                            <i class="material-icons">edit</i>
+                        </a>
+                        <a class="waves-effect waves-light" onclick="castingDelete(<%= data[i].id_casting %>)">
+                            <i class="material-icons">delete</i>
+                        </a>
+                    </td>
+                </tr>
+            <% } %>
+        <% } %>
+        </tbody>
+    </table>
+</div>
+
+<!-- Edit Modal -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <div class="row">
+            <form name="formEditModal" id="formEditModal" method="post" class="col s12">
+                <input type="hidden" name="idcastingModal" id="idcasting">
+                <div class="row">
+                    <div class="input-field col s2">
+                        <select id="statusModal" name="statusModal">
+                            <option value="" disabled selected>Choose</option>
+                            <option value="Open">Open</option>
+                            <option value="Closed">Close</option>
+                        </select>
+                        <label for="statusModal">Status</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="nameModal" name="nameModal" type="text" class="validate">
+                        <label for="nameModal">Name</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input name="cityModal" id="cityModal" type="text" class="validate">
+                        <label for="cityModal">City</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <select name="countryModal" id="countryModal">
+                            <option value="" disabled selected>Choose</option>
+                            <option value="ES">España</option>
+                        </select>
+                        <label for="countryModal">Country</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <select name="stateModal" id="stateModal">
+                            <option value="" disabled selected>Choose</option>
+                        </select>
+                        <label for="stateModal">State</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s2">
+                        <input name="dateModal" id="dateModal" type="text" class="datepicker">
+                        <label for="dateModal">Date</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <select id="typeModal" name="typeModal">
+                            <option value="" disabled selected>Choose</option>
+                            <option value="Open">Open</option>
+                            <option value="Selection">Selection</option>
+                        </select>
+                        <label for="typeModal">Casting Type</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input name="vacancyModal" id="vacancyModal" type="number" min=1 class="validate">
+                        <label for="vacancyModal">Vacancies</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea name="descriptionModal" id="descriptionModal" class="materialize-textarea"></textarea>
+                        <label for="descriptionModal">Description</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" id="editButtonModal" class="modal-close waves-effect waves-green btn"
+                           value="Edit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<%- include include/scripts.ejs %>
+<script>
+  function castingDelete (id) {
+    console.log(id)
+  }
+
+  function editModal (id) {
+    let modal = document.getElementById('editModal');
+    let options = {
+      onOpenStart: function () {
+
+        $('#formEditModal').prop('action', '/casting/edit/' + id)
+        $('#countryModal').on('change', [$('#stateModal'), $('#countryModal')], getStateM);
+      }
+    }
+    let iModal = M.Modal.init(modal, options);
+    iModal.open()
+  }
+
+  const token = localStorage.getItem('token')
+  const decoded = jwt_decode(token)
+  if (!decoded) {
+    location.href = '/login'
+  } else {
+    document.getElementById("iduser").value = decoded.id
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    let elems = document.querySelectorAll('select')
+    let countryInstance = M.FormSelect.init(elems, '')
+  })
+
+  document.addEventListener('DOMContentLoaded', function () {
+    let elems = document.querySelectorAll('.datepicker')
+    let options = { format: 'yyyy/mm/dd', firstDay: 1 }
+    let instance = M.Datepicker.init(elems, options)
+  })
+
+  $(document).ready(function () {
+    $('#country').on('change', [$('#state'), $('#country')], getStateM);
+  })
+
+</script>
+</html>

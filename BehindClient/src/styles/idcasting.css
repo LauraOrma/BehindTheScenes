@@ -1,0 +1,30 @@
+.background-ny{
+    background-image: url('../newyork.jpg');
+    width: 1918px;
+    max-width: 1918px;
+    height: 640px;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.castingid{
+    font-family: 'Montserrat', sans-serif;
+    color:white;
+    background-color: #1E1E1E;
+    border-radius: 8px;
+    box-shadow: 5px 4px 5px 5px #000000;
+    font-size: 2vh;
+}
+.nombrecastingid{
+    font-size: 3vh;
+}
+.linkcast{
+    color:white !important;
+}
+.NAMEWHITE{
+    color: rgb(37, 131, 93) !important;
+}
+.NAMEWHITE:hover{
+    color: rgb(64, 221, 158) !important;
+}

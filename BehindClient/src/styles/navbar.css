@@ -1,0 +1,56 @@
+nav{
+    background-color: #1B2D2B;
+    color:white;
+    height: 15vh;
+    width: auto;
+    font-family: 'Montserrat', sans-serif;
+    
+}
+
+.title{
+    margin-left: 2%;
+    margin-top: 4vh;
+    font-size: 5vh !important;
+    position: absolute !important;
+
+}
+
+ul {
+   
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+a {
+    margin-top: 4vh;
+    text-decoration: none;
+    color: white;
+    font-size: 2.5vh !important;
+}
+
+a:hover{
+    color: #25C088 !important;
+}
+
+.home{
+    border: 1px solid white;
+  
+}
+
+.sidenav-trigger{
+    margin-top: 4vh;
+}
+
+.profile-dropdown{
+    font-size: 2vh !important;
+    color:black !important;
+    margin-top: 0 !important;
+}
+
+
+
+
+
+

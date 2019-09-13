@@ -1,0 +1,59 @@
+<script src="/javascripts/jwt-decode.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+  function getCountry () {
+    fetch('/api/getcountry', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(response => {
+        if (response.ok) {
+          let country = document.getElementById('country')
+          response.json().then(json =>
+            json.map(countries => {
+              let option = document.createElement('option')
+              option.text = countries.name
+              option.value = countries.id
+              country.add(option)
+            }))
+        }
+      }
+    )
+  }
+
+  function getStateM (event) {
+    let state = event.data[0]
+    let country = event.data[1].val()
+    fetch('/api/getstate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        country: country
+      })
+    }).then(response => {
+      if (response.ok) {
+        response.json().then(json => {
+          let options = '<option value=\'\' disabled>Choose</option>'
+          json.map(states => {
+            options = options + '<option value=\'' + states.id + '\'>' + states.name + '</option>'
+          })
+          state.empty()
+          state.append(options)
+          state.formSelect()
+        })
+      }
+    })
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    let elems = document.querySelectorAll('.sidenav')
+    let instances = M.Sidenav.init(elems, '')
+  })
+
+</script>
