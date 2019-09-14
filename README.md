@@ -24,11 +24,6 @@ Construido con 🛠️
 MySQL, node.js, Express
 React-Redux, Materialize, Material-Ui, React Hooks
 
-Dropwizard - El framework web usado
-Maven - Manejador de dependencias
-ROME - Usado para generar RSS
-Contribuyendo 🖇️
-Por favor lee el CONTRIBUTING.md para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
 
 Autores ✒️
 Laura Ortega Marín
