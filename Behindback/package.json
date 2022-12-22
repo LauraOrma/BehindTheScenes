@@ -15,7 +15,7 @@
     "express-myconnection": "^1.0.4",
     "http-errors": "^1.7.3",
     "jquery": "^3.4.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "@types/jsonwebtoken": "^8.3.3",
     "materialize-css": "^1.0.0-rc.2",
     "morgan": "~1.9.1",
